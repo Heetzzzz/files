@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>numbers methods</title>
+</head>
+<body>
+
+	<script>
+		
+		var u = "-10 10";
+		var v = "10 6 10";
+		var w = -100;
+		var x = 120;
+		var y = 1.23567;
+		var z = 12.789;
+
+		document.write(`<h1>toString</h1>`);
+
+		document.write(x.toString() + "<br>");
+		document.write((123).toString() + "<br>");     //return a number as a string.
+		document.write((100+200).toString() + "<br>"); 
+
+		document.write(`<h1>toExponential</h1>`);
+
+		document.write(y.toExponential() + "<br>");
+		document.write(y.toExponential(2) + "<br>");   //it will return a string  and parameter define the character after decimal points.
+		document.write(y.toExponential(4) + "<br>");
+
+		document.write(`<h1>toFixed</h1>`);
+
+		document.write(z.toFixed(0) + "<br>");
+		document.write(z.toFixed(1) + "<br>");
+		document.write(z.toFixed(2) + "<br>");         //returns a string with the number written with a specified number of decimals.
+		document.write(z.toFixed(4) + "<br>");
+
+		document.write(`<h1>toPrecision</h1>`);
+
+		document.write(y.toPrecision() + "<br>");
+		document.write(y.toPrecision(2) + "<br>");     //return a string with number of length written in 6 perameters.
+		document.write(y.toPrecision(3) + "<br>");
+		document.write(y.toPrecision(4) + "<br>");
+
+		document.write(`<h1>valueOf</h1>`);
+
+		document.write(x.valueOf() + "<br>")
+		document.write((123).valueOf() + "<br>")       //return a number as a number.
+		document.write((100+200).valueOf() + "<br>")
+
+		document.write(`<h1>Converting Variables to Numbers</h1>`);
+
+		document.write(Number(x) + "<br>");
+		document.write(Number("x") + "<br>");   
+		document.write(Number(y) + "<br>");
+		document.write(Number(z) + "<br>");			   //convert variables to numbers.
+		document.write(Number(true) + "<br>");
+		document.write(Number(false) + "<br>");
+		document.write(Number("heet") + "<br>");
+
+		document.write(`<h1>parseInt</h1>`);
+
+		document.write(parseInt(u) + "<br>");
+		document.write(parseInt(v) + "<br>");		   //convert string into numbers.
+		document.write(parseInt(w) + "<br>");		  //only first number return either negative or positive or decimal doesn't metter. 
+		document.write(parseInt(x) + "<br>");		  //if character apper than it will return NaN.
+		document.write(parseInt(y) + "<br>");
+		document.write(parseInt(z) + "<br>");
+		document.write(parseInt("heet") + "<br>");
+
+		document.write(`<h1>parseFloat</h1>`);
+
+		document.write(parseFloat(u) + "<br>");
+		document.write(parseFloat(v) + "<br>");	       //convert string into numbers.
+		document.write(parseFloat(w) + "<br>");		  //only first number return either negative or positive or decimal doesn't metter. 
+		document.write(parseFloat(x) + "<br>");		  // it will also return a floating numbers.
+		document.write(parseFloat(y) + "<br>");		  //if character apper than it will return NaN.
+		document.write(parseFloat(z) + "<br>");
+		document.write(parseFloat("heet") + "<br>");
+
+
+		
+
+	</script>
+
+</body>
+</html>

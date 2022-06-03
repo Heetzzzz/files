@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS numbers</title>
+</head>
+<body>
+
+	<!-- JS uses the + operators for addition and concatination of string or variables -->
+
+	<p id="demo"></p>
+
+	<script>
+		
+		let v = "heet";
+		let w = 5;
+		let x = "10";
+		let y = 20;
+		let z = "2";
+
+		let a = w + x; 		//in both cases string will be concatinate
+		let b = x + y; 		//either number+string or string+number.
+		let c = w + x + y; 
+		let d = x * z;
+
+		document.write(a+"<br>");
+
+		document.write(b+"<br>");
+
+		document.write("Result is:-" + w + y + "<br>"); //it will be concat because print starting with string so that it will take varible as a string.
+
+		document.write(c + "<br>"); //it will be concat because one of those values has string so that it will be concat all the variables.
+
+		document.write(d + "<br>"); //if both string value has numbers that it will conver string to numaric nd print the output exept addition(+).
+
+		//NaN and isNaN()
+
+		//NaN mean for Not a number,it is the reserved word of java script.
+		//if any arithmatic operation performe without numeric value than the output will be NaN.
+
+		//isNaN is check the value is not a number. it with return true or false.
+
+		document.getElementById("demo").innerHTML = isNaN(v);
+
+		document.write(typeof(NaN));
+
+		//Comparing two JavaScript objects always returns false.
+
+	</script>
+
+</body>
+</html>

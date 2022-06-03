@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>String Templtes</title>
+</head>
+<body>
+
+	<h1>Templets Literals</h1>
+
+	<p id="p1"></p>
+	<p id="p2"></p>
+	<p id="p3"></p>
+	<p id="p4"></p>
+	<p id="p5"></p>
+
+	<script>
+		
+		var str=`This is the "Cleanest" city of india.`; //it can allows it single or double quotetion between the string.
+
+		var str1=`This is 
+				 the cleanest
+				 city of 
+				 india.`;  //it can allows the line break.
+
+		let fname = "Heet";
+
+		let lname = "Patel";
+
+		let price = 10;
+		let VAT = 0.25;
+
+		let total = `Total:- ${(price * (1 + VAT)).toFixed(2)}` //it can allows expression in string, toFixed indictes the the howmany value u want after .(point).
+
+		let tags = ["Heet","Rahul","Mitesh","Urvish"];
+
+		let list = `<ul>`;
+
+		for(const i of tags){
+			list += `<li>${i}</li>`;
+		}
+		list += `</ul>`;    // it can allows the html tag in the strings
+
+		document.getElementById("p1").innerHTML = str;
+
+		document.getElementById("p2").innerHTML = str1;
+
+		document.getElementById("p3").innerHTML = `Hey, ${fname} ${lname}`; //it allows the variables in the string. it is called as stirng interpolation.
+
+		document.getElementById("p4").innerHTML = total; 
+
+		document.getElementById("p5").innerHTML = list; 
+
+	</script>
+
+</body>
+</html>

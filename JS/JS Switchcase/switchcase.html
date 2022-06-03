@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Switch case</title>
+</head>
+<body>
+
+	<script>
+		
+		//Switch cases use strict comparison (===).
+
+		//The values must be of the same type to match.
+
+		let x = "0";
+		switch (x) {
+		  case 0:
+		  case 1:
+		    text = "Off";
+		    break;
+		    
+		    break;
+		  default:
+		    text = "No value found";
+		}
+
+		document.write(text + "<br>");
+
+		//The default case does not have to be the last case in a switch block:
+
+		switch (new Date().getDay()) {
+		  default:
+		    text1 = "Looking forward to the Weekend";
+		    break;
+		  case 6:
+		    text1 = "Today is Saturday";
+		    break;
+		  case 0:
+		    text1 = "Today is Sunday";
+		}
+
+		document.write(text1);
+
+	</script>
+
+</body>
+</html>

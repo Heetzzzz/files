@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script>
+		function showDetails(human) {
+		  var humanType = human.getAttribute("data");
+		  alert("The " + human.innerHTML + " is a " + humanType + ".");
+		}
+	</script>
+	
+</head>
+<body>
+
+<h1>Humans</h1>
+<p>Click on a names to see the Surname:</p>
+
+	<ul>
+	  <li onclick="showDetails(this)" id="heet" data="Patel">Heet</li>
+	  <li onclick="showDetails(this)" id="rahul" data="Panchal">Rahul</li>  
+	  <li onclick="showDetails(this)" id="urvish" data="Rathod">Urvish</li>  
+	</ul>
+
+</body>
+</html>

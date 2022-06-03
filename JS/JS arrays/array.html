@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Arrays</title>
+</head>
+<body>
+
+	<script>
+
+		const car = ["heet","rahul","mitesh"]
+		let len   = car.length;
+
+		document.write(car + "<br>");
+
+		document.write(typeof car + "<br>"); //type of the array
+
+		document.write(car.length + "<br>");  //count the length
+
+		document.write(car.sort() + "<br>");   //sort the array by alphbetically
+
+		document.write(car[0] + "<br>");  //accessing the first element of the array
+
+		document.write(car[car.length-1]);  //accessing the first element of the array
+
+		let text = "<ul>";
+
+			for(var i = 0;i < len; i++)
+			{
+				text += "<li>" + car[i] + "</li>";  //for loop in array
+			}
+		text += "</ul>";
+
+		document.write(text + "<br>");
+
+	</script>
+
+</body>
+</html>

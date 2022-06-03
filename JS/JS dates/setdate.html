@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Set date</title>
+</head>
+<body>
+
+	<script>
+		
+		const d = new Date();
+		const dd = new Date();
+
+		d.setFullYear(2000);
+		document.write(d + "<br>");
+
+		d.setMonth(5);
+		document.write(d + "<br>");
+
+		d.setDate(5);
+		document.write(d + "<br>");
+
+		//The setFullYear() method can optionally set month and day:
+
+		dd.setFullYear(2020, 11, 3);
+		document.write(dd + "<br>");
+
+		d.setHours(20);
+		document.write(d + "<br>");
+
+		d.setMinutes(40);
+		document.write(d + "<br>");
+
+		d.setSeconds(59);
+		document.write(d + "<br>");
+
+	</script>
+
+</body>
+</html>

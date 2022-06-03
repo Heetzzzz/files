@@ -1,0 +1,50 @@
+html tags
+
+	<a> anchor tag
+	<img> image tag
+	<p> paragraph tag
+
+<h1> to <h6> heading tags
+<br> break line
+<hr> horizontal line
+<pre> display as u want
+
+html style
+	
+	style tag
+		properties:-
+			background-color:
+			color:
+			font-family:
+			font-size:
+			text-align:
+
+html formatting
+
+	<b> bold
+	<u> underline
+	<i> italic
+	<sub> subscript
+	<sup> superscript
+	<small>	smallet text
+	<strong> same as bold
+	<del> line on the text
+	<ins> same as underline
+	<mark> higlighted text
+
+html quatations
+
+	<blockquote>
+	<q> for double inverted comma
+	<abbr> give useful information to browsers
+		Use the global title attribute to show the description for the abbreviation element
+	<address> defines the contact information
+	<cite> element usually renders in italic.
+	<bdo> Bi-Directional Override 
+		reverse the test
+
+html css
+	
+	inline css= style
+	internal css= <style> tag
+	externam css= <link> tag

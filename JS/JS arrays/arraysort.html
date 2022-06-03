@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sort</title>
+</head>
+<body>
+
+	<script>
+
+		const array = ["heet","rahul","mitesh","urvish"];
+		const array2 = [10,40,20,60,15,90];
+
+		document.write(array.sort() + "<br>");
+
+		document.write(array.reverse() + "<br>");
+
+		document.write(array2.sort(function(a, b){ return a - b }) + "<br>");  //sorting numericals low to high
+
+		document.write(array2.sort(function(a, b){ return b - a }) + "<br>");  //sorting numericals high to low
+
+		document.write(array2.sort(function(a, b){ return 0.5 - Math.random()}) + "<br>");
+
+		function myArrayMax(arr) {
+		  return Math.max.apply(null, arr);
+		}
+		document.write(myArrayMax(array2) + "<br>");
+
+		function myArrayMin(arr) {
+		  return Math.min.apply(null, arr);
+		}
+		document.write(myArrayMin(array2) + "<br>");
+
+	</script>
+
+</body>
+</html>

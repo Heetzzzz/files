@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formats</title>
+</head>
+<body>
+
+	<script>
+		
+		//UTC time is defined with a capital letter Z.
+
+		//And, month can be written in full (January), or abbreviated (Jan):
+
+		//Month and day can be in any order:
+
+		//Commas are ignored. Names are case insensitive:
+
+		// Date.parse() method to convert it to milliseconds.
+
+		const msec = Date.parse("March 21, 2012");
+		document.write(msec + "<br>");
+
+		//You can then use the number of milliseconds to convert it to a date object:
+
+		const d = new Date(msec);
+		document.write(d);
+
+
+	</script>
+
+</body>
+</html>

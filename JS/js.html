@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>java script</title>
+
+	<p id="p1"></p>
+	
+	<button id="btn" onclick="myFun()">Click me</button>
+	<p id="p2"></p>
+
+	<p id="p3"></p>
+
+	<p id="p4"></p>
+
+	<script>
+		
+		var x = "";
+		var y = null;
+
+		document.write(x.length);
+		document.write(y.length);
+		// x *= y;
+
+// '' null
+
+  	let a = 10;
+
+  	if (true) 
+  	{
+   	 let a=9
+   	 document.write(a);
+  	}
+  	console.log(a) 
+  	for (i = 0; i < 10; i++) 
+	{
+	    document.write("Hello World!<br>");
+	    
+	}
+
+	document.getElementById("p1").innerHTML = "Hello JAVASCRIPT";
+
+	alert(a);
+
+	function myFun(){
+
+		document.getElementById("p2").innerHTML = "Button is clicked";
+	}
+
+	document.getElementById("p3").innerHTML = "10.50";
+
+	var b = 10;
+  	if (true) 
+  	{
+   	 var b=9
+   	 document.write(b);
+   	 document.write("<br>");
+  	}
+  	document.write(b) 
+
+  	const cars = ["Saab", "Volvo", "BMW"];
+
+	cars[0] = "Toyota";
+
+	cars.push("Audi");
+
+	document.getElementById("p4").innerHTML = cars;
+
+	var str = "  Heet  paTel Heet ";
+	var str1 = "patel";
+	var str2 = "rahul";
+
+	document.write(str.slice(1,4),"<br>");
+	document.write(str.substring(1,4),"<br>");
+	document.write(str.substr(2,2),"<br>");
+
+	document.write(str.toUpperCase(),"<br>");
+	document.write(str.toLowerCase(),"<br>");
+
+	document.write(str.replace("Heet", "Rahul"),"<br>");
+	document.write(str.replace(/Heet/g, "Rahul"),"<br>");
+
+	document.write(str.padStart(104,"X"),"<br>");
+
+	document.write(str2.charAt(1),"<br>");
+	document.write(str2.charCodeAt(1),"<br>");
+
+	document.write(str.trim(),"<br>");
+
+	</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

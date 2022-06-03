@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS dates</title>
+</head>
+<body>
+
+	<script>
+		
+		const d = new Date();
+
+		document.write(d + "<br>");
+
+		//7 numbers specify year, month, day, hour, minute, second, and millisecond (in that order):
+
+		const dd = new Date(2018, 11, 24, 10, 33, 30, 0);
+
+		document.write(dd + "<br>");
+
+		//One parameter will be interpreted as new Date(milliseconds).
+
+		//You cannot omit month. If you supply only one parameter it will be treated as milliseconds.
+
+		const ddd = new Date(18, 11, 24, 10, 33, 30, 0);
+
+		document.write(ddd + "<br>"); //previous century
+
+		//One day (24 hours) is 86 400 000 milliseconds.
+
+		//When you display a date object in HTML, it is automatically converted to a string, with the toString() method.
+
+		const dddd = new Date(18, 11, 24, 10, 33, 30, 0);
+
+		document.write(dddd.toUTCString() + "<br>");
+
+		//The toDateString() method converts a date to a more readable format:
+
+		document.write(dddd.toDateString() + "<br>");
+
+		//The toISOString() method converts a Date object to a string, using the ISO standard format:
+
+
+	</script>
+
+</body>
+</html>

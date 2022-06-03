@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS demo using all basics of JS</title>
+	<style>
+		
+		.container{
+			height: auto;
+			width: auto;
+			background-color: black;
+			color: white;
+		}
+		.container2{
+			height: auto;
+			width: auto;
+			background-color: pink;
+			color: black;
+			margin: 10px;
+		}
+		.container3{
+			height: auto;
+			width: auto;
+			background-color: lightblue;
+			color: black;
+			margin: 10px;
+		}
+		.container p{
+			display: inline-block;
+			background-color: grey;
+			height: auto;
+			width: auto;
+			text-align: center;
+			padding: 20px;
+		}
+		.container3 b#ifelse{
+			background-color: yellow;
+			height: auto;
+			width: auto;
+			margin: 0px;
+			padding: 0px;
+		}
+
+		.container3 p#ifelse{
+			background-color: grey;
+			height: auto;
+			width: auto;
+			margin: 0px;
+			padding: 0px;
+		}
+					
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		<h1 style="text-align: center;" id="h1">Variable Declaration</h1>
+
+		<p id="var"></p>
+		<p id="let"></p>
+		<p id="const"></p>
+		
+		
+		<button type="button" onclick="document.getElementById('let').style.display='inline-block'">Click to show</button>
+		<button type="button" onclick="document.getElementById('let').style.display='none'">Click to hide</button>
+		
+		<button type="button" onclick="document.getElementById('h1').style.fontSize='10px'">H1 size 10px!</button>
+		<button type="button" onclick="document.getElementById('h1').style.fontSize='32px'">Normal H1</button>
+
+		<p id="demo">Text</p>
+		<button onclick="myFunction()">click button</button>
+		<button onclick="myFunction1()">normal button</button>
+
+		<p id="object"></p>
+		<p id="date">Over the button</p>
+		<button onmouseover="date()">Mouse Over</button>
+		<button onmousedown="date1()">Mouse Down</button>
+
+		<button onclick="alerttt()">Alert</button>
+
+		<b id="slice"></b>
+		<b id="substring"></b>
+		<b id="substr"></b>
+
+	</div>
+
+	<div class="container2">
+
+		<button type="button" onclick="hide()">Click to hide upper container</button><br>
+		<button type="button" onmouseover="show()">Click to show upper container</button><br>
+		
+		<b id="replace"></b><br>
+		<b id="upper"></b><br>
+		<b id="lower"></b><br>
+		<b id="concat"></b><br>
+
+		<b id="remove"></b><br>
+		<b id="remove2"></b><br>
+
+		<b id="indexof"></b><br>
+		<b id="lastindexof"></b><br>
+		<b id="search"></b><br>
+		<b id="match"></b><br>
+
+		<b id="back-tick"></b><br>
+
+		<button onclick="download()">Download</button><br>		
+
+		<b id="array"></b><br>
+		<b id="array-length"></b><br>
+		<b id="array-sort"></b><br>
+		<b id="list"></b><br>
+
+		<b id="merge"></b><br>
+
+	</div>
+
+	<div class="container3">
+		
+		<b id="over18"></b><br>
+		<b id="round"></b><br>
+		<b id="ceil"></b><br>
+		<b id="floor"></b><br>
+		<b id="trunc"></b><br>
+		<b id="abs"></b><br>
+		<b id="rand"></b>
+		<p id="max"></p>
+		<p id="min"></p>
+		<!-- <b id="ifelse"></b>  if we can use same id name than it will first id nd ignored other ids -->
+		<p id="ifelse"></p>
+
+		<p id="forin"></p>
+
+	</div>
+
+</body>
+<script>	
+
+	var x1      = 1;
+	let x2      = "Hide";
+	const x3    = 3;
+	let x4      = "Show";
+	let x5      = 4.6;
+	let x6      = -4.6;
+	let x7      = Math.min(0, 400, 150, 30, 20, -8, -200, 300 ,-300);
+	let x8      = Math.max(0, 400, 150, 30, 20, -8, -200, 300 ,-300);
+	const x9    = [1,4,7,3,12,7,23,8,23,89,78,17,90]
+	var text    = "Hello, im at \"MatrixHive\" Technologies PVT PVT pvt LTD.";
+
+	var txt     = `hey,im 
+				  "heet" 
+				  'patel' ${x2}, ${x3}`;
+
+	let part    = text.slice(13,25);     //slice nd substring almost same,  negative in slice makes reverse slice
+	let part1   = text.substring(13,25); //diff is substring cannot take negative values.
+	let part2   = text.substr(13,7);
+
+	let rep     = text.replace(/pvt/ig,"PRIVATE");
+	let upper   = text.toUpperCase();
+	let lower   = text.toLowerCase();
+	let concat  = text.concat(" ",part1)
+	let remove  = "    hello    ";
+	let remove2 = remove.trim();
+
+	let text1   = text.indexOf("PVT");       //indexof and search almost same
+	let text2   = text.lastIndexOf("PVT");
+	let text3   = text.search("at");			//diff is search canot take perameter at starting position
+	let text4   = text.match(/PVT/gi);
+
+	const array = ["heet",    //array is a type of object
+				   "mitesh",
+				   "urvish",
+				   "rahul"];  //linebreak are not important
+
+	   array[2] =  "sagar";   //change the value of an array
+
+	const ary1  = ["romil",   
+				   "kahaan",
+				   "umang"];
+
+	array.push("mehul");    //insert an elemnt in array
+	array.pop();			//delete at last element in array
+	array.unshift("mehul"); //insert an element at first in the array
+	array.shift();			//delete at first in the array
+
+	const merge = array.concat(ary1);
+
+	array[0]    = "hit";	//change the value on the array
+
+	merge.sort(); 			//sorting merge array alphabitcally
+	merge.reverse();
+
+	let tag     = "<ul>";
+
+	array.forEach(listFunction);
+
+	tag        += "</ul>";
+
+	const name  = {fname:"Patel", mname:"Heet",lname:"Amrishbhai"};
+
+	const num   = [45, 4, 9, 16, 25];
+	const over18 = num.filter(iteration);
+
+	document.getElementById("var").innerHTML = x1 + x3;
+	document.getElementById("let").innerHTML = x2 + x4;
+	document.getElementById("const").innerHTML = x3 - x1;
+
+	function myFunction(){
+		document.getElementById("demo").innerHTML = "Text Changed";
+	}
+	function myFunction1(){
+		document.getElementById("demo").innerHTML = "Text";
+	}
+
+	document.getElementById("object").innerHTML = name.fname + " " + name.mname + " " + name.lname;
+
+	function date(){
+		const col = document.getElementsByClassName("container3");
+		col[0].style.display = "none";
+	}
+
+	function date1(){
+		const col =  document.getElementsByClassName("container3");
+		col[0].style.display = "block";
+	}
+
+	console.log("Length of X2:" + x2.length);
+
+	alerttt = () => window.alert(text);
+	
+	function download(){
+		window.print();
+	}
+
+	function iteration(value){
+		return value > 18;
+	}
+
+	function listFunction(value){
+		tag += "<li>" + value + "</li>";
+	}
+
+	function hide(){
+		const collection = document.getElementsByClassName("container");
+		collection[0].style.display='none';
+	}
+	function show(){
+		const collection = document.getElementsByClassName("container");
+		collection[0].style.display='block';
+	}
+
+	class car{
+		constructor(cname, year){
+			this.name = cname;
+			this.year = year;
+		}
+	}
+
+	let myCar = new car("verna", "2019");
+	document.write(myCar.name + " " + myCar.year);
+
+	document.getElementById("slice").innerHTML     = part;
+	document.getElementById("substring").innerHTML = part1;
+	document.getElementById("substr").innerHTML    = part2;
+
+	document.getElementById("replace").innerHTML = rep;
+	document.getElementById("upper").innerHTML   = upper;
+	document.getElementById("lower").innerHTML   = lower;
+	document.getElementById("concat").innerHTML  = concat;
+
+	document.getElementById("remove").innerHTML  = remove + " Length:- " + remove.length;
+	document.getElementById("remove2").innerHTML = remove2 + " Length:- " + remove2.length;
+
+	document.getElementById("indexof").innerHTML     = text1;
+	document.getElementById("lastindexof").innerHTML = text2;
+	document.getElementById("search").innerHTML      = text3;
+	document.getElementById("match").innerHTML       = text4;
+
+	document.getElementById("back-tick").innerHTML    = txt;
+
+	document.getElementById("array").innerHTML        = array;
+	document.getElementById("array-length").innerHTML = array.length;
+	document.getElementById("array-sort").innerHTML   = array.sort();
+
+	document.getElementById("list").innerHTML   = tag;
+
+	document.getElementById("merge").innerHTML  = merge;
+
+	document.getElementById("over18").innerHTML = over18;
+
+	document.getElementById("round").innerHTML = Math.round(x5);   //take nearest integer
+	document.getElementById("ceil").innerHTML  = Math.ceil(x5);		//take nearest uppe side integer
+	document.getElementById("floor").innerHTML = Math.floor(x5);	//take nearest downside floor
+	document.getElementById("trunc").innerHTML = Math.trunc(x5);	//take only integer remove decimal value
+	document.getElementById("abs").innerHTML   = Math.abs(x6);
+	document.getElementById("rand").innerHTML  = Math.floor(Math.random() * 101);	
+	document.getElementById("min").innerHTML   = x7;
+	document.getElementById("max").innerHTML   = x8;
+
+	if(x1 < 0)
+	{
+		document.getElementById("ifelse").innerHTML   = "Number is Negative";
+	}
+	else if(x1 > 0)
+	{
+		document.getElementById("ifelse").innerHTML   = "Number is Positive";
+	}
+	else
+	{
+		document.getElementById("ifelse").innerHTML   = "Number is Zero";
+	}
+
+	let txtt = "";
+	for(let x in x9)
+	{
+		txtt += x9[x] + "<br>";
+	}
+	document.getElementById("forin").innerHTML  = txtt;
+
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Get Date Method</title>
+</head>
+<body>
+
+	<script>
+		const d = new Date();
+
+		//The getTime() method returns the number of milliseconds since January 1, 1970:
+
+		document.write(d.getTime() + "<br>");
+
+		document.write(d.getFullYear() + "<br>");
+		document.write(d.getMonth() + "<br>");
+
+		//In JavaScript, the first month (January) is month number 0, so December returns month number 11.
+
+		const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+		let month = months[d.getMonth()];
+		document.write(month + "<br>");
+
+		document.write(d.getDate() + "<br>");
+		document.write(d.getHours() + "<br>");
+		document.write(d.getMinutes() + "<br>");
+		document.write(d.getSeconds() + "<br>");
+		document.write(d.getMilliseconds() + "<br>");
+
+		//The getDay() method returns the weekday of a date as a number (0-6):
+
+		document.write(d.getDay() + "<br>");
+
+		//UTC date methods are used for working with UTC dates (Universal Time Zone dates):
+		//UTC date methods are same as get date methods.
+
+	</script>
+
+</body>
+</html>

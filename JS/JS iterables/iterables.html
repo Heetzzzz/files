@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Iterables</title>
+</head>
+<body>
+
+	<p id="demo"></p>
+
+	<script>
+		
+		const array = "heet";
+
+		let tx = "";
+
+		for(let x of array)
+		{
+			tx += x + "<br>" ;
+		}
+		document.write(tx);
+
+		const ary = ["heet","rahul","mitesh"];
+
+		let txt = "";
+
+		for(let y of ary)
+		{
+			txt += y + "<br>" ;
+		}
+		document.write(txt)
+
+		//Iterating over a String & Array
+
+		const z = new Set(["a","b","c"]);
+		z.add("d");
+		z.add("e");
+		z.add("e"); 	//If you add equal elements, only the first will be saved:
+
+		document.write(z.size + "<br>");
+
+		let text = "";
+		for(const v of z.values()){  //using for/of u can print the values.
+			text += v + "<br>";
+		}
+		document.write(text); 
+
+		const fruits = new Map([
+		  ["apples", 500],
+		  ["bananas", 300],
+		  ["oranges", 200]
+		]);
+
+		document.write(fruits.size + "<br>");
+		fruits.set("kiwi",100);  				//add an element to the map
+		document.write(fruits.size + "<br>"); 
+		document.write(fruits.get("bananas") + "<br>");  //it will return the value of that keys u entered
+
+		fruits.delete("kiwi");  //delete the element which key is kiwi
+
+		document.write(fruits.size + "<br>");
+		document.write(fruits.has("kiwi") + "<br>");  //return true or false if the key value match
+
+		let t ="";
+
+		fruits.forEach(function(key, value)
+		{
+			t += key + "=" + value + "<br>";  //using foreach loop to print key and values of the map
+		})
+
+		document.write(t);
+
+		let p ="";
+		for(const x of fruits.entries()){
+			p += x +"<br>";  					//using entries function to print key values.
+		}
+		document.write(p);
+
+		document.getElementById("demo").innerHTML = 
+		  typeof "john" + "<br>" +
+		  typeof 3.14 + "<br>" +
+		  typeof NaN + "<br>" +
+		  typeof false + "<br>" +
+		  typeof [1,2,3,4] + "<br>" +
+		  typeof {name:'john', age:34} + "<br>" +    //array,map,set,date all r objects.
+		  typeof new Date() + "<br>" +
+		  typeof function () {} + "<br>" +			//function has function data type.
+		  typeof myCar + "<br>" +					//In JavaScript, a variable without a value, has the value undefined. The type is also undefined.
+		  typeof null + "<br>" +
+		  typeof p;
+
+		  //undefined and null are equal in value but different in type:
+		  //undefined has type undefined and null has object type.
+
+
+		  //The global method Number() can convert strings to numbers.  The global method Number() can be used to convert dates to numbers.
+		  //The global method String() & toString() can convert numbers to strings.  The global method String() can convert dates to strings.
+
+		  //Converting Booleans to Numbers  
+		  document.write(Number(false) + "<br>");     // returns 0
+		  document.write(Number(true) + "<br>");      // returns 1 
+
+		  //Converting Booleans to Strings
+		  document.write(false.toString() + "<br>");   // returns "false"
+		  document.write(true.toString() + "<br>");    // returns "true"
+
+		  //JavaScript Uses 32 bits Bitwise Operands
+		  //it has 0 and 1 conversion
+		  //Bitwise operators
+
+		  //&-AND if 1 & 1 than 1 else all zero
+		  //|-OR  if 0 | 0 than 0 else all one
+
+		  //^-XOR if 0 ^ 0	and 1 ^ 1 than zero else all one
+		  //~NOT  inverts all its bits.
+
+		  //<< - Zero fill left shift	
+		  //>> - Signed right shift	
+		  //>>> - Zero fill right shift	
+
+		  //Regular Expression Modifiers
+		  
+		  //  / /i for case-insensitive
+		  //  / /g for global match
+		  //  / /m for multi-line matching
+		  //  /\d/ for find digits
+		  //  /\S/ FOR find a whitespace characters
+		  //  /\b/ for Find a match at the beginning of a word like this: \bWORD, or at the end of a word like this: WORD\b	
+
+		  let text = "Visit W3Schools";
+		  let result = text.match(/w3schools/i);
+		  document.write()	
+
+	</script>
+
+</body>
+</html>

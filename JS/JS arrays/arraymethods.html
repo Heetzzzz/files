@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Array methods</title>
+</head>
+<body>
+
+	<script>
+		
+		const array = ["heet","rahul","mitesh","urvish"]
+		const array2 = ["Cecilie", "Lone"];
+
+		document.write(array.toString() + "<br>");
+
+		document.write(array.join("**") + "<br>");
+
+		document.write(array.pop() + "<br>");
+		document.write(array + "<br>");
+
+		document.write(array.push("urvish") + "<br>");
+		document.write(array + "<br>");
+
+		document.write(array.shift() + "<br>");
+		document.write(array + "<br>");
+
+		document.write(array.unshift("heet") + "<br>");
+		document.write(array + "<br>");
+
+		// delete array[0];  					//please use pop or shift instead of delete.
+		// document.write(array[0] + "<br>");  // delete will leave undefined so it will better to user array functions
+
+		const concat = array.concat(array2);
+		document.write(concat + "<br>");
+
+		array.splice(2,0,"mehul","meet");	//aplice will return an deleted elements first para,eter is starting point and second is delete position value.
+		document.write(array + "<br>");    //add an element to anywhere in array
+
+		var ary = array.slice(2);
+		document.write(ary + "<br>");
+
+		
+
+	</script>
+
+</body>
+</html>

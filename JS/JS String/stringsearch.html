@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>String Search</title>
+</head>
+<body>
+
+	<script>
+		
+		var str="Hello i'm Heet Heet patel from Ahmedabad,Hello...";
+
+		document.write("Index of:-" + str.indexOf("Hello",10) + "<br>"); //second parameter as starting position.
+
+		document.write("Last Indexof:-" + str.lastIndexOf("Heet",25) + "<br>");  //second parameter as starting position.
+
+		document.write("String Search:-" + str.search(/heet/i) + "<br>"); //it can take reguler expression.
+
+		document.write("String Match:-" + str.match(/heet/ig) + "<br>"); //it can return all the matches in the array. if not found then return NULL
+
+		document.write("Include:-" + str.includes("Heet",15) + "<br>"); //return true or false if string contain value.
+
+		document.write("Starts With:-" + str.startsWith("Heet",10) + "<br>");  //return true or false if string starts with specific value.
+
+		document.write("Ends With:-" + str.endsWith("Heet",13) + "<br>");  //return true or false if string ends with specific value. parameter is check to that length .
+
+	</script>
+
+</body>
+</html>
