@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 include 'class.php';
 include 'db.php';
@@ -36,23 +39,26 @@ $rowperpage = 5;
 
 }
 
-$merge = $con->query("select * from crud");
+$merge = "select * from crud";
+// $res = $con->query($merge);
+// $merge1 = (" limit $row,".$rowperpage);
+// $t_row = mysqli_num_rows($res);
 
-$merge1 = (" limit $row,".$rowperpage);
-
-if($_POST['search'])
+if($_REQUEST['search'])
 {
-	$search = $_POST['search'];
-	$merge .= " where fname like '%{$search}%' or
-						lname like '%{$search}%' or
-						dob like '%{$search}%' or
-						phone like '%{$search}%' or
-						email like '%{$search}%' or
-						country like '%{$search}%' or
-						source like '%{$search}%' or
-						compaign like '%{$search}%' ";
+	$search = $_REQUEST['search'];
+	// print_r($search);exit;
+	$merge .= " where fname like '%$search%' or
+					  	lname like '%$search%' or
+						dob like '%$search%' or
+						phone like '%$search%' or
+						email like '%$search%' or
+						country like '%$search%' or
+						source like '%$search%' or
+						compaign like '%$search%' ";
+	// print_r($merge);
 }	
-
+$merge1 = $con->query($merge);
 // $search2 = $con->query("select * from crud where id like '%$search%' or
 // 												 fname like '%$search%' or
 // 												 lname like '%$search%' or
@@ -71,7 +77,7 @@ if($_POST['search'])
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   	<script type="text/javascript" src="val.js"></script>
-  	<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+  	<!-- <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script> -->
 <script>
     $(document).ready(function () {
 
@@ -211,8 +217,9 @@ $(document).ready(function(){
     </form>
 
 <!--     <button onclick="sortTable()" class="btn btn-success">Sort</button> -->
-	<form action="view.php" method="post">
-		<input type='submit' value='Delete' name='but_delete' class="btn btn-danger" style="margin-left: 30px;">
+
+<form action="view.php" method="get">
+	<input type='submit' value='Delete' name='but_delete' class="btn btn-danger" style="margin-left: 30px;">
 	<div id='ser'>
 	Search:<input type="text" name="search" id="search" placeholder="Search Data">
 	</div>
@@ -251,7 +258,7 @@ if ($result = $con->query('SELECT * FROM crud ORDER BY ' .  $column . ' ' . $sor
 			
 		<?php
 			
-			while($read1 =  $merge->fetch_object())
+			while($read1 =  $merge1->fetch_object())
 			{
 		?>			
 				<tr>
