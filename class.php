@@ -12,6 +12,7 @@ class Database
 
 		// for($i=1;$i<=10;$i++)
 		// {
+
 		if(isset($_POST["submit"]))
 		{
 			$fname    = $_POST['fname'];
@@ -59,15 +60,13 @@ class Database
 	{
 		include 'db.php';
 
-		$limit = 5; 
-		$limit2 = 10;  
+		$limit = 5;  
 
 		$read = $con->query("select * from crud");
 
 		$total_rows = mysqli_num_rows($read); 
 
     	$total_pages = ceil ($total_rows / $limit);
-    	$total_pages2 = ceil ($total_rows / $limit2);
 
     	if (!isset ($_GET['page']) ) {  
 
@@ -78,24 +77,15 @@ class Database
 		   $page_number = $_GET['page'];  
 		} 
 		$initial_page = ($page_number-1) * $limit;
-		$initial_page2 = ($page_number-1) * $limit2; 
 
     	$getQuery = $con->query("SELECT *FROM crud LIMIT " . $initial_page . ',' . $limit); 
-    	$getQuery2 = $con->query("SELECT *FROM crud LIMIT " . $initial_page2 . ',' . $limit2);  
+    	
 
 	    //$result = mysqli_query($conn, $getQuery);      
 
 	    //display the retrieved result on the webpage  
-
-	      // show page number with link   
-
-    // 	  for($page_number = 1; $page_number<= $total_pages; $page_number++) {  
-
-    //     echo '<a href = "index.php?page=' . $page_number . '">' . $page_number . ' </a>';  
-
-    // }  
 		
-		return [$getQuery,$total_pages,$total_rows,$getQuery2];
+		return [$getQuery,$total_pages];
 	}
 
 	public function edit()
