@@ -6,43 +6,143 @@ include 'db.php';
 $obj = new Database();
 
 // $sql = $obj->view();
+// [$sql, $t2, $l2] = $obj->view10();
+[$sql, $t] = $obj->view();
 
-[$sql, $t, $r, $sql2] = $obj->view();
+$row = 0;
 
-if(isset($_POST['ssearch']))
+// number of rows per page
+$rowperpage = 5;
+
+	if(isset($_POST['num_rows']))
+	{
+	    $rowperpage = $_POST['num_rows'];
+	}
+
+	if(isset($_POST['but_delete']))
+	{
+		if(isset($_POST['delete']))
+		{
+		foreach($_POST['delete'] as $deleteid)
+		{
+	  		$deleteUser = $con->query("DELETE from crud WHERE id=".$deleteid);
+	  		// mysqli_query($con,$deleteUser);
+		}
+	}
+	else
+	{
+		echo "<script>alert('Select check atleast one checkbox')</script>";
+	}
+
+}
+
+$merge = $con->query("select * from crud");
+
+$merge1 = (" limit $row,".$rowperpage);
+
+if($_POST['search'])
 {
-    $search = $_POST['search'];
-    // search in all table columns
-    // using concat mysql function
-    $query = $con->query("select * from crud WHERE CONCAT(id, fname, `lname`, `dob`, `phone`, `email`, `country`, `source`, `compaign`) LIKE '%".$search."%'");
-    // $search_result = filterTable($query);
-    
-}
- else {
-    $query = $con->query("select * from crud");
-    // $search_result = filterTable($query);
-}
+	$search = $_POST['search'];
+	$merge .= " where fname like '%{$search}%' or
+						lname like '%{$search}%' or
+						dob like '%{$search}%' or
+						phone like '%{$search}%' or
+						email like '%{$search}%' or
+						country like '%{$search}%' or
+						source like '%{$search}%' or
+						compaign like '%{$search}%' ";
+}	
 
-// function to connect and execute the query
-// function filterTable($query)
-// {
-//     $con = mysqli_connect("localhost", "root", "", "Employee");
-//     $filter_Result = mysqli_query($con, $query);
-//     return $filter_Result;
-// }
+// $search2 = $con->query("select * from crud where id like '%$search%' or
+// 												 fname like '%$search%' or
+// 												 lname like '%$search%' or
+// 												 dob like '%$search%' or
+// 												 phone like '%$search%' or
+// 												 email like '%$search%' or
+// 												 country like '%$search%' or
+// 												 source like '%$search%' or
+// 												 compaign like '%$search%' ");
 
 ?>
 
 <title>View</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="val.js"></script>
-  <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	<script type="text/javascript" src="val.js"></script>
+  	<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('.editbtn').on('click', function () {
+
+            $('#myModal').modal('show');
+
+            $tr = $(this).closest('tr');
+
+            var data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#upid').val(data[0]);
+            $('#fname').val(data[1]);
+            $('#lname').val(data[2]);
+            $('#dob').val(data[3]);
+            $('#phone').val(data[4]);
+            $('#email').val(data[1]);
+            $('#country').val(data[2]);
+            $('#source').val(data[3]);
+            $('#compaign').val(data[4]);
+        });
+    });
+
+// function myFunction() 
+// {
+// 	var input, filter, table, tr, td, i, txtValue;
+
+// 	input = document.getElementById("search");
+
+// 	filter = input.value.toUpperCase();
+
+// 	table = document.getElementById("myTable");
+
+// 	tr = table.getElementsByTagName("tr");
+
+//   	for (i = 0; i < tr.length; i++) 
+//   	{
+//     	td = tr[i].getElementsByTagName("td")[0];
+
+// 	    if (td) 
+// 	    {
+// 	      	txtValue = td.textContent || td.innerText;
+// 		    if (txtValue.toUpperCase().indexOf(filter) > -1) 
+// 		    {
+// 		      	tr[i].style.display = "";
+// 		    } 
+// 		    else 
+// 		    {
+// 	        	tr[i].style.display = "none";
+// 	      	}
+// 	    }       
+//   	}
+// }
+
+$(document).ready(function(){
+    // Number of rows selection
+    $("#num_rows").change(function(){
+
+        // Submitting form
+        $("#form").submit();
+    });
+});
+</script>
 
 <style type="text/css">
 	
-	table{
+	table,th{
 		text-align: center;
 	}
 	.container{
@@ -58,73 +158,108 @@ if(isset($_POST['ssearch']))
 	b{
 		color: red;
 	}
-	#ser,#ssearch{
+	#ser{
 		float: right;
 	}
 
 </style>
-<script>
-        $(document).ready(function () {
-
-            $('.editbtn').on('click', function () {
-
-                $('#myModal').modal('show');
-
-                $tr = $(this).closest('tr');
-
-                var data = $tr.children("td").map(function () {
-                    return $(this).text();
-                }).get();
-
-                console.log(data);
-
-                $('#upid').val(data[0]);
-                $('#fname').val(data[1]);
-                $('#lname').val(data[2]);
-                $('#dob').val(data[3]);
-                $('#phone').val(data[4]);
-                $('#email').val(data[1]);
-                $('#country').val(data[2]);
-                $('#source').val(data[3]);
-                $('#compaign').val(data[4]);
-            });
-        });
-    </script>
 
 	<h1 align="center">Data of Employee</h1>
-	Show
-    <select>
-    	<option value="5"><?php echo $t; ?></option>
-    	<option value="10">10</option>
-    </select>
-    entries
-	<form action="view.php" method="post">
-	<div id='ser'>Search:<input type="text" name="search" id="search" placeholder="Search Data"></div>
-	<div><input type="submit" name="ssearch" id="ssearch" value="Filter"><br><br></div>
-			<table class="table table-striped table-bordered table-hover">
+    <form method="post" action="" id="form">
+            <div>
 
-				<tr>
-					<td>ID</td>
-					<td>First name</td>
-					<td>Last name</td>
-					<td>Date of birth</td>
-					<td>Phone</td>
-					<td>Email</td>
-					<td>Country</td>
-					<td>Source</td>
-					<td>Compaign</td>
-					<td>Edit</td>
-					<td>Delete</td>
-				</tr>
+                <!-- Number of rows -->
+                <div class="divnum_rows">
+                <span>Number of rows:</span>&nbsp;
+                <select id="num_rows" name="num_rows">
+                    <?php
+                    	
+                    $numrows_arr = array("5","10","25","50");
+
+                    foreach($numrows_arr as $nrow)
+                    {
+                        if(isset($_POST['num_rows']) && $_POST['num_rows'] == $nrow)
+                        {
+                            echo '<option value="'.$nrow.'" selected="selected">'.$nrow.'</option>';
+
+                        }else{
+                            echo '<option value="'.$nrow.'">'.$nrow.'</option>';
+                        }
+                    }
+                    	// count total number of rows
+			            // $sql3 = $con->query("SELECT COUNT(*) AS cntrows FROM crud");
+			            // // $result = mysqli_query($con,$sql);
+			            // $fetchresult = mysqli_fetch_array($sql3);
+			            // $allcount = $fetchresult['cntrows'];
+
+			            // selecting rows
+
+                    		// var_dump($merge);
+							// $row = $result->fetch_object();	
+							// $con->next_result();
+							// $result1 = $con->store_result();
+							// $row = $result->fetch_assoc();
+							// var_dump($row);	
+                    	
+              
+			            // $sno = $row + 1;
+
+                    ?>
+                </select>
+            </div>
+        </div>
+    </form>
+
+<!--     <button onclick="sortTable()" class="btn btn-success">Sort</button> -->
+	<form action="view.php" method="post">
+		<input type='submit' value='Delete' name='but_delete' class="btn btn-danger" style="margin-left: 30px;">
+	<div id='ser'>
+	Search:<input type="text" name="search" id="search" placeholder="Search Data">
+	</div>
+<?php
+
+$columns = array('fname','lname','dob','phone','email','country','source','compaign');
+
+$column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
+
+$sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+
+if ($result = $con->query('SELECT * FROM crud ORDER BY ' .  $column . ' ' . $sort_order)) 
+{
+	$up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
+	$asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
+	$add_class = ' class="highlight"';
+
+?>
+		<table class="table table-striped table-bordered table-hover" id="myTable">
+
+			<tr>
+				<th>Multi Delete</th>
+				<th>ID</th>
+				<th><a href="view.php?column=fname&order=<?php echo $asc_or_desc; ?>">First name<i class="fas fa-sort<?php echo $column == 'fname' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+				<th>Last name</th>
+				<th>Date of birth</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Country</th>
+				<th>Source</th>
+				<th>Compaign</th>
+				<th>Edit</th>
+				<th>Delete</th>
+				
+			</tr>
 			
 		<?php
 			
-			while($read1 =  $sql->fetch_object())
+			while($read1 =  $merge->fetch_object())
 			{
 		?>			
 				<tr>
+					<td>
+						<input type='checkbox' name='delete[]' value='<?= $read1->id; ?>'>
+					</td>
 					<td><?php echo $read1->id; ?></td>
-					<td><?php echo $read1->fname; ?></td>
+					<td <?php echo $column == 'fname' ? $add_class : ''; ?>><?php echo $read1->fname; ?></td>
 					<td><?php echo $read1->lname; ?></td>
 					<td><?php echo $read1->dob; ?></td>
 					<td><?php echo $read1->phone; ?></td>
@@ -135,22 +270,25 @@ if(isset($_POST['ssearch']))
 					<td><a href="edit.php?editid=<?php echo $read1->id; ?>" class="btn btn-info">Edit</a>
 						<a href="editid=<?php echo $read1->id; ?>" class="btn btn-success editbtn" data-toggle="modal" data-target="#myModal">Popop</a></td>
 					<td><a href="delete.php?delid=<?php echo $read1->id; ?>" class="btn btn-danger">Delete</a></td>
+					
 				</tr>
 		<?php
 		}
 		?>
-				<tr>
-					<td colspan="11">
-					<?php
-
-						for($page_number = 1; $page_number<= $t; $page_number++) 
-						{  
-        					echo '<a class="btn" href = "view.php?page=' . $page_number . '">' . $page_number . ' </a>';  
-   						}  
-					?>
-					</td>
-				</tr>
-	</table></form>
+	</table>
+		<?php
+		echo "<center>";
+			for($page_number = 1; $page_number <= $t; $page_number++) 
+			{  
+				echo '<a class="btn" href = "view.php?page=' . $page_number . '">' . $page_number . ' </a>';  
+			} 
+		echo "</center>";
+		?>
+	</form>
+	<?php
+	$result->free();
+}
+?>
 
 <div class="container">
   <!-- <h2>Modal Example</h2> -->
